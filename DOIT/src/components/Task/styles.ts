@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  container: {},
-  taskName: {},
+  container: { flexDirection: "row", alignItems: "center" },
+  taskName: { marginRight: 8, backgroundColor: "#262626" },
   button: {
     width: 56,
     height: 56,

@@ -2,7 +2,7 @@ import React from "react";
 import { styles } from "./styles";
 import { TouchableOpacity, View, Image, Text } from "react-native";
 
-export function Button() {
+export function Task() {
   return (
     <View style={styles.container}>
       <Text style={styles.taskName}>Task name here</Text>
