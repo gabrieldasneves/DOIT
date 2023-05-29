@@ -40,4 +40,19 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  taskContainer: {},
+  counterContainer: {
+    marginTop: 55,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 230,
+  },
+  createdText: {
+    color: "#4EA8DE",
+  },
+  doneText: {
+    color: "#5E60CE",
+  },
+  tasks: { marginTop: 20, borderTopWidth: 2, borderTopColor: "#333333" },
 });
