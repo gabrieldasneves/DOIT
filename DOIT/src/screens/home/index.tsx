@@ -1,10 +1,38 @@
 import React, { useState } from "react";
 import { styles } from "./styles";
-import { View, Image, Text, TouchableOpacity, TextInput } from "react-native";
+import {
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  Alert,
+  FlatList,
+} from "react-native";
 import { Header } from "../../components/Header";
+import { EmptyTasks } from "../../components/EmptyTasks";
+import { Task } from "../../components/Task";
 
 export function Home() {
   const [taskName, setTaskName] = useState("");
+  const [tasks, setTasks] = useState<string[]>([]);
+
+  function handleTaskAdd() {
+    if (tasks.includes(taskName)) {
+      return Alert.alert("This task already exists", "");
+    }
+    if (taskName == "") {
+      return Alert.alert("Invalid participant", "");
+    }
+    setTasks((prevState) => [...prevState, taskName]);
+
+    setTaskName("");
+  }
+
+  function handleRemoveTask(name: string) {
+    setTasks((prevState) => prevState.filter((task) => task !== name));
+    console.log(tasks);
+  }
 
   return (
     <View style={styles.container}>
@@ -20,7 +48,7 @@ export function Home() {
           onChangeText={setTaskName}
           value={taskName}
         />
-        <TouchableOpacity style={styles.addButton}>
+        <TouchableOpacity style={styles.addButton} onPress={handleTaskAdd}>
           <Image source={require("../../../assets/plus.png")} />
         </TouchableOpacity>
       </View>
@@ -35,7 +63,19 @@ export function Home() {
           </View>
         </View>
 
-        <View style={styles.tasks}></View>
+        <View style={styles.tasks}>
+          <FlatList
+            data={tasks}
+            renderItem={({ item }) => (
+              <Task
+                key={item}
+                name={item}
+                onRemove={() => handleRemoveTask(item)}
+              />
+            )}
+          />
+          <EmptyTasks />
+        </View>
       </View>
     </View>
   );

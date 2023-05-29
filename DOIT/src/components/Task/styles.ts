@@ -1,13 +1,23 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  container: { flexDirection: "row", alignItems: "center" },
-  taskName: { marginRight: 8, backgroundColor: "#262626" },
+  container: {
+    backgroundColor: "#262626",
+    flexDirection: "row",
+    alignItems: "center",
+    borderRadius: 8,
+    height: 64,
+  },
+  taskName: {
+    fontSize: 14,
+    color: "#F2F2F2",
+    marginRight: 8,
+    backgroundColor: "#262626",
+  },
+  radio: {},
   button: {
-    width: 56,
-    height: 56,
-    borderRadius: 5,
-    backgroundColor: "#1E6F9F",
+    width: 32,
+    height: 32,
     alignItems: "center",
     justifyContent: "center",
   },
