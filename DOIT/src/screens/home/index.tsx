@@ -56,25 +56,27 @@ export function Home() {
       <View style={styles.taskContainer}>
         <View style={styles.counterContainer}>
           <View>
-            <Text style={styles.createdText}>Created</Text>
+            <Text style={styles.createdText}>Created {tasks.length}</Text>
           </View>
           <View>
             <Text style={styles.doneText}>Done</Text>
           </View>
         </View>
-
         <View style={styles.tasks}>
-          <FlatList
-            data={tasks}
-            renderItem={({ item }) => (
-              <Task
-                key={item}
-                name={item}
-                onRemove={() => handleRemoveTask(item)}
-              />
-            )}
-          />
-          <EmptyTasks />
+          {tasks.length === 0 ? (
+            <EmptyTasks />
+          ) : (
+            <FlatList
+              data={tasks}
+              renderItem={({ item }) => (
+                <Task
+                  key={item}
+                  name={item}
+                  onRemove={() => handleRemoveTask(item)}
+                />
+              )}
+            />
+          )}
         </View>
       </View>
     </View>
