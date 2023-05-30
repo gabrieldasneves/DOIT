@@ -10,9 +10,15 @@ interface Props {
 export function Task(props: Props) {
   return (
     <View style={styles.container}>
-      <View style={styles.radio}></View>
-      <Text style={styles.taskName}>{props.name}</Text>
-      <TouchableOpacity style={styles.button}>
+      <View style={styles.radioButtonContainer}>
+        <TouchableOpacity onPress={() => {}} style={styles.radioButton}>
+          <View style={styles.radioButtonIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {}}>
+          <Text style={styles.taskName}>{props.name}</Text>
+        </TouchableOpacity>
+      </View>
+      <TouchableOpacity style={styles.button} onPress={props.onRemove}>
         <Image source={require("../../../assets/trash.png")} />
       </TouchableOpacity>
     </View>
