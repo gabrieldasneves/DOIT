@@ -39,6 +39,12 @@ export const styles = StyleSheet.create({
     backgroundColor: "#5E60CE",
     borderColor: "#5E60CE",
   },
+  radioEmpty: {
+    height: 17,
+    width: 17,
+    borderRadius: 10,
+    borderColor: "#5E60CE",
+  },
   button: {
     width: 32,
     height: 32,

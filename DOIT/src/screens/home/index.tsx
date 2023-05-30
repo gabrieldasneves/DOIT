@@ -13,24 +13,34 @@ import { Header } from "../../components/Header";
 import { EmptyTasks } from "../../components/EmptyTasks";
 import { Task } from "../../components/Task";
 
+export interface Taskprops {
+  name: string;
+  checked: boolean;
+}
+
 export function Home() {
   const [taskName, setTaskName] = useState("");
-  const [tasks, setTasks] = useState<string[]>([]);
+  const [tasks, setTasks] = useState<Taskprops[]>([]);
 
   function handleTaskAdd() {
-    if (tasks.includes(taskName)) {
-      return Alert.alert("This task already exists", "");
+    if (
+      tasks.find(
+        (task) => task.name.toLocaleLowerCase() === taskName.toLocaleLowerCase()
+      )
+    ) {
+      return;
     }
     if (taskName == "") {
       return Alert.alert("Invalid participant", "");
     }
-    setTasks((prevState) => [...prevState, taskName]);
+    const data = { name: taskName, checked: false };
+    setTasks((prevState) => [...prevState, data]);
 
     setTaskName("");
   }
 
   function handleRemoveTask(name: string) {
-    setTasks((prevState) => prevState.filter((task) => task !== name));
+    setTasks((prevState) => prevState.filter((task) => task.name !== name));
     console.log(tasks);
   }
 
@@ -63,20 +73,18 @@ export function Home() {
           </View>
         </View>
         <View style={styles.tasks}>
-          {tasks.length === 0 ? (
-            <EmptyTasks />
-          ) : (
-            <FlatList
-              data={tasks}
-              renderItem={({ item }) => (
-                <Task
-                  key={item}
-                  name={item}
-                  onRemove={() => handleRemoveTask(item)}
-                />
-              )}
-            />
-          )}
+          <FlatList
+            data={tasks}
+            renderItem={({ item }) => (
+              <Task
+                key={item.name}
+                task={item}
+                onRemove={() => handleRemoveTask(item.name)}
+                onCheck={() => {}}
+              />
+            )}
+            ListEmptyComponent={() => <EmptyTasks />}
+          />
         </View>
       </View>
     </View>
