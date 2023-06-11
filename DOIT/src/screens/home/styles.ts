@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: 230,
+    gap: 210,
   },
   createdText: {
     color: "#4EA8DE",

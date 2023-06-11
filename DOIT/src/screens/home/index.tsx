@@ -21,6 +21,7 @@ export interface Taskprops {
 export function Home() {
   const [taskName, setTaskName] = useState("");
   const [tasks, setTasks] = useState<Taskprops[]>([]);
+  const [check, setCheck] = useState(false);
 
   function handleTaskAdd() {
     if (
@@ -42,6 +43,13 @@ export function Home() {
   function handleRemoveTask(name: string) {
     setTasks((prevState) => prevState.filter((task) => task.name !== name));
     console.log(tasks);
+  }
+
+  function handleCheckTask(task: Taskprops) {
+    const currentTasks = [...tasks];
+    task.checked = !task.checked;
+    console.log(currentTasks);
+    return task.checked;
   }
 
   return (
@@ -66,10 +74,10 @@ export function Home() {
       <View style={styles.taskContainer}>
         <View style={styles.counterContainer}>
           <View>
-            <Text style={styles.createdText}>Created {tasks.length}</Text>
+            <Text style={styles.createdText}>Created: {tasks.length}</Text>
           </View>
           <View>
-            <Text style={styles.doneText}>Done</Text>
+            <Text style={styles.doneText}>Done: {tasks.length}</Text>
           </View>
         </View>
         <View style={styles.tasks}>
@@ -80,7 +88,7 @@ export function Home() {
                 key={item.name}
                 task={item}
                 onRemove={() => handleRemoveTask(item.name)}
-                onCheck={() => {}}
+                onCheck={() => handleCheckTask(item)}
               />
             )}
             ListEmptyComponent={() => <EmptyTasks />}

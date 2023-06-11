@@ -16,7 +16,7 @@ export function Task(props: Props) {
           {props.task.checked ? (
             <View style={styles.radioButtonIcon} />
           ) : (
-            <View style={styles.radioEmpty} />
+            <View style={styles.radioButtonEmpty} />
           )}
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {}}>
