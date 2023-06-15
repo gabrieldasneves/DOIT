@@ -19,6 +19,4 @@
 
 ### Interface
 
-<img src="https://github.com/gabrieldasneves/Event-Participants/blob/main/Event-Participants/src/assets/mainscreen.jpeg?raw=true" width="300" height="auto">
-
-<img src="https://github.com/gabrieldasneves/Event-Participants/blob/main/Event-Participants/src/assets/deletealert.jpeg?raw=true" width="300" height="auto">
+<img src="https://raw.githubusercontent.com/gabrieldasneves/DOIT/main/DOIT/assets/screens.png" width="auto" height="auto">
