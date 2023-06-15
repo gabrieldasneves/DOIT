@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styles } from "./styles";
 import {
   View,
@@ -21,7 +21,11 @@ export interface Taskprops {
 export function Home() {
   const [taskName, setTaskName] = useState("");
   const [tasks, setTasks] = useState<Taskprops[]>([]);
-  const [check, setCheck] = useState(false);
+  const [check, setCheck] = useState<Number>(0);
+
+  useEffect(() => {
+    setCheck(tasks.filter((item) => item.checked).length);
+  }, [tasks]);
 
   function handleTaskAdd() {
     if (
@@ -75,10 +79,10 @@ export function Home() {
       <View style={styles.taskContainer}>
         <View style={styles.counterContainer}>
           <View>
-            <Text style={styles.createdText}>Created: {tasks.length}</Text>
+            <Text style={styles.createdText}>Created {tasks.length}</Text>
           </View>
           <View>
-            <Text style={styles.doneText}>Done: {tasks.length}</Text>
+            <Text style={styles.doneText}>Done {String(check)}</Text>
           </View>
         </View>
         <View style={styles.tasks}>
