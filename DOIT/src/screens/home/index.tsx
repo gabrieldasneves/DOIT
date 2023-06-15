@@ -78,11 +78,41 @@ export function Home() {
 
       <View style={styles.taskContainer}>
         <View style={styles.counterContainer}>
-          <View>
-            <Text style={styles.createdText}>Created {tasks.length}</Text>
+          <View
+            style={{
+              flexDirection: "row",
+            }}
+          >
+            <Text style={styles.createdText}>Created </Text>
+            <View
+              style={{
+                backgroundColor: "#333333",
+                width: 25,
+                height: 19,
+                alignItems: "center",
+                borderRadius: 999,
+              }}
+            >
+              <Text style={{ color: "#D9D9D9" }}>{tasks.length}</Text>
+            </View>
           </View>
-          <View>
-            <Text style={styles.doneText}>Done {String(check)}</Text>
+          <View
+            style={{
+              flexDirection: "row",
+            }}
+          >
+            <Text style={styles.doneText}>Done </Text>
+            <View
+              style={{
+                backgroundColor: "#333333",
+                width: 25,
+                height: 19,
+                alignItems: "center",
+                borderRadius: 999,
+              }}
+            >
+              <Text style={{ color: "#D9D9D9" }}>{String(check)}</Text>
+            </View>
           </View>
         </View>
         <View style={styles.tasks}>
