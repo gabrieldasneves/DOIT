@@ -47,8 +47,9 @@ export function Home() {
 
   function handleCheckTask(task: Taskprops) {
     const currentTasks = [...tasks];
+    setTasks(currentTasks);
     task.checked = !task.checked;
-    console.log(currentTasks);
+
     return task.checked;
   }
 
